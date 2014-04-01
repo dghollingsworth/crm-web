@@ -1,3 +1,4 @@
+require_relative 'contact'
 require 'sinatra'
 
 get '/contacts' do 
@@ -6,7 +7,7 @@ get '/contacts' do
 end
 
 get '/contacts/new' do
-	 
+
 end
 
 get '/contacts/:id' do 

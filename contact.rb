@@ -3,12 +3,12 @@ class Contact
 
 	attr_accessor :notes, :first_name, :last_name, :email, :id
 
-	def initialize
+	def initialize(first, last, email, notes)
 		@id = Contact.get_id
-		@first_name = ""
-		@last_name = ""
-		@notes = []
-		@email = ""
+		@first_name = first
+		@last_name = last
+		@email = email
+		@notes = notes
 	end
 
 	def to_s

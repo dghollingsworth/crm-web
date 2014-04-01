@@ -2,7 +2,11 @@ require_relative 'contact'
 require 'sinatra'
 
 get '/contacts' do 
-	@contacts_title = "Contacts"
+	@contacts = []
+	@contacts << Contact.new("Julie", "Hache", "julie@bitmakerlabs.com", "Instructor")
+	@contacts << Contact.new("Will", "Richman", "will@bitmakerlabs.com", "Co-Founder")
+	@contacts << Contact.new("Chris", "Johnston", "chris@bitmakerlabs.com", "Instructor")
+
 	erb :contacts
 end
 
@@ -16,7 +20,7 @@ get '/contacts/:id' do
 
 
 	# how do i access the value of :id?
-	"hello #{params[:name]}!"
+	
 end
 
 get '/contacts/:id/edit' do 

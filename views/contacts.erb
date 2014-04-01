@@ -1,7 +1,8 @@
-<h1><%= @contacts_title %></h1>
+<h1>All Contacts</h1>
 
 <ul>
-	<li><a href="/contacts/new">Add New Contact</a></li>
-	<li><a href="/contacts/:id">View a Contact</a></li>
-	<li><a href="/contacts/:id/edit">Modify Existing Contact</a></li>
+<% @contacts.each do |contact| %>
+	<li><%= contact.first_name %>, <%= contact.last_name %>, <%=contact.email%>, <%=contact.notes%> </li>
+<% end %>
 </ul>
+

@@ -1,0 +1,59 @@
+/*
+
+#FFAB00 - yellow
+#123EAB	- darkest
+#466FD5-lighter
+#6C8AD5 - lightest
+*/
+
+body{
+	/*background-color:#123EAB;*/
+	background:url("background.png");
+}	
+div{
+	border-radius: 7px;
+	border:2px dashed Gainsboro;
+	background-color:;
+	width:70%;
+	margin-left: auto;
+	margin-right: auto;
+	padding:1rem;
+	margin-top: 7px;
+}
+*{
+  -moz-box-sizing:border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+#header{
+	text-align: center;
+}
+
+#main_container{
+	padding:10px;
+}
+#main_container h3, h2{
+	margin-left: 1rem;
+}
+#main_container p{
+	margin-left: 1.3rem;
+}
+
+a{
+	text-decoration:none;
+	color:#DCDCDC;
+}
+a:hover{
+	text-decoration: underline;
+}
+input{
+	margin-left:1.3rem;
+}
+
+p, h1, h2, h3, h4, h5, h6{
+	font-family: Courier, Arial, sans-serif;
+	color:Gainsboro;
+
+
+
+

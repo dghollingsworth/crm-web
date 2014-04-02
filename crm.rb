@@ -35,6 +35,5 @@ end
 
 get '/' do 
 	@crm_app_name = "My CRM"
-	@title_name = "Main Menu"
 	erb :index
 end

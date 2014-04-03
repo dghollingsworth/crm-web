@@ -24,8 +24,8 @@ get '/contacts' do
 end
 
 #######Experimental
-get '/contacts/1001' do 
-	@contact = @@rolodex.find(1001)
+get '/contacts/:id' do 
+	@contact = @@rolodex.find(params[:id].to_i)	
 	erb :show_contact
 end
 #######Experimental

@@ -5,7 +5,14 @@
 #466FD5-lighter
 #6C8AD5 - lightest
 */
-
+input{
+	color:#000;
+}
+*{
+	color:Gainsboro;
+	font-family: Courier, Arial, sans-serif;
+	color:Gainsboro;
+}
 body{
 	/*background-color:#123EAB;*/
 	background:url("background.png");
@@ -32,7 +39,7 @@ div{
 #main_container{
 	padding:10px;
 }
-#main_container h3, h2{
+#main_container h3, h2, h1{
 	margin-left: 1rem;
 }
 #main_container p{
@@ -49,10 +56,10 @@ a:hover{
 input{
 	margin-left:1.3rem;
 }
-
-p, h1, h2, h3, h4, h5, h6{
-	font-family: Courier, Arial, sans-serif;
-	color:Gainsboro;
+fieldset{
+	border:2px dashed Gainsboro;
+}
+	
 
 
 

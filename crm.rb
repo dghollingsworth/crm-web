@@ -23,11 +23,12 @@ get '/contacts' do
 	erb :contacts
 end
 
-get '/contacts/:id' do 
-	# so it doesn't literally match contacts/:id
-	# it actually matches something like: contacts/poop, contacts/3, etc
-	# how do i access the value of :id?
+#######Experimental
+get '/contacts/1001' do 
+	@contact = @@rolodex.find(1001)
+	erb :show_contact
 end
+#######Experimental
 
 get '/contacts/:id/edit' do 
 	#/contacts/SOMETHING/edit

@@ -35,6 +35,11 @@ div{
 #header{
 	text-align: center;
 }
+#header a{
+	display: inline-block;
+	margin-left:5px;
+	margin-right:5px;
+}
 
 #main_container{
 	padding:10px;
@@ -59,7 +64,9 @@ input{
 fieldset{
 	border:2px dashed Gainsboro;
 }
-	
+ul{
+	list-style: none;
+}	
 
 
 

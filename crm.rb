@@ -1,7 +1,7 @@
 require_relative 'rolodex'
 require_relative 'contact'
 require 'sinatra'
-
+@@message = ""
 @@rolodex = Rolodex.new 
 
 #This is the Contact Form
@@ -32,8 +32,8 @@ get '/contacts/:id' do
 		raise Sinatra::NotFound
 	end
 end
-#######Show Specified Contact
 
+#####go to edit contact form#####
 get '/contacts/:id/edit' do 
 	#/contacts/SOMETHING/edit
 	@contact = @@rolodex.find(params[:id].to_i)
@@ -44,7 +44,56 @@ get '/contacts/:id/edit' do
 	end
 end
 
+get '/find' do 
+	@found_contacts = []
+	
+	if params[:last_name]
+		# find the matching contacts, if any (could be many)
+		@@rolodex.contacts.each do |contact| 
+			if contact.last_name==params[:last_name] 
+				@found_contacts << contact
+			else
+				"Sorry...None Found"
+			end
+		end
+	end
+	erb :find
+end
+
+delete "/contacts/:id" do 
+	@contact = @@rolodex.find(params[:id].to_i)
+	if @contact
+		@@rolodex.delete_contact(@contact)
+		@@message = "Contact Deleted"
+		redirect to("/find")
+	else
+		raise Sinatra::NotFound
+	end
+end
+
+put "/contacts/:id" do 
+	@contact = @@rolodex.find(params[:id].to_i)
+	if @contact
+		@contact.first_name = params[:first_name]
+		@contact.last_name = params[:last_name]
+		@contact.email = params[:email]
+		@contact.notes = params[:notes]
+
+		redirect to("/contacts")
+	else
+		raise Sinatra::NotFound
+	end
+end
+
+
+
 get '/' do 
 	@crm_app_name = "My CRM"
 	erb :index
 end
+
+
+
+
+
+

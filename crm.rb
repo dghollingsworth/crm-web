@@ -23,7 +23,7 @@ get '/contacts' do
 	erb :contacts
 end
 
-#######Experimental
+#######Show specified contact
 get '/contacts/:id' do 
 	@contact = @@rolodex.find(params[:id].to_i)	
 	if @contact
@@ -32,10 +32,16 @@ get '/contacts/:id' do
 		raise Sinatra::NotFound
 	end
 end
-#######Experimental
+#######Show Specified Contact
 
 get '/contacts/:id/edit' do 
 	#/contacts/SOMETHING/edit
+	@contact = @@rolodex.find(params[:id].to_i)
+	if @contact
+		erb :edit
+	else
+		raise Sinatra::NotFound
+	end
 end
 
 get '/' do 

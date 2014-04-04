@@ -4,15 +4,15 @@
 		
 		<% @found_contacts.each do |contact| %>
 			
-			<p><%= contact.id%>  <%= contact.last_name %></p>
-			<p><%=contact.first_name %></p> 
-			<p><%=contact.email %></p> 
+			<p><%= contact.id%> - <%= contact.last_name %>,</p>
+			<p><%=contact.first_name %>,</p> 
+			<p><%=contact.email %>,</p> 
 			<p><%=contact.notes %></p>
 			<!--<p><a href="/contacts/<%=contact.id%>/edit">EDIT</a></p> -->
-			<form action="/contacts/<%=contact.id%>/edit" method="get">
+			<form class="submit_button" action="/contacts/<%=contact.id%>/edit" method="get">
 				<input type="submit" value="  Edit Contact  ">
 			</form>
-			<form action="/contacts/<%= contact.id %>" method="post">
+			<form class="submit_button" action="/contacts/<%= contact.id %>" method="post">
 				<input type="hidden" name="_method" value="delete">
 				<input type="submit" value="Delete Contact">
 			</form>

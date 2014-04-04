@@ -67,6 +67,9 @@ fieldset{
 }
 ul{
 	list-style: none;
+}
+.submit_button{
+	display: inline-block;
 }	
 
 

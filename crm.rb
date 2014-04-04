@@ -68,19 +68,19 @@ get '/find' do
 		@contact = Contact.each do |contact| 
 			if contact.last_name==params[:last_name] 
 				@found_contacts << contact
-			else
-				@@message = "Sorry...nothing found"
 			end
 		end
+		@@message = "Sorry...nothing found" if @found_contacts.empty?
 	end
+	
 	erb :find
 end
 
 delete "/contacts/:id" do 
 	@@message = ""
-	@contact = @@rolodex.find(params[:id].to_i)
+	@contact = Contact.get(params[:id].to_i)
 	if @contact
-		@@rolodex.delete_contact(@contact)
+		@contact.destroy
 		@@message = "Contact Deleted"
 		redirect to("/delete")
 	else
@@ -94,13 +94,11 @@ get "/delete" do
 end
 
 put "/contacts/:id" do 
-	@contact = @@rolodex.find(params[:id].to_i)
+	@contact = Contact.get(params[:id].to_i)
 	if @contact
-		@contact.first_name = params[:first_name]
-		@contact.last_name = params[:last_name]
-		@contact.email = params[:email]
-		@contact.notes = params[:notes]
-
+		@contact.update(:first_name=> params[:first_name],:last_name=>params[:last_name],
+			:email=>params[:email],:notes=>params[:notes])
+		
 		redirect to("/contacts")
 	else
 		raise Sinatra::NotFound

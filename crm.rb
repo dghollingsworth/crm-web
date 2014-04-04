@@ -15,9 +15,6 @@ class Contact
 	property :email, String
 	property :notes, String
 
-	def to_s
-		"ID: #{@id}\nFirst Name: #{@first_name.capitalize}\nLast Name: #{@last_name.capitalize}\nEmail: #{@email}\nNotes: #{@notes}\n********"
-	end
 end
 
 DataMapper.finalize
@@ -37,30 +34,25 @@ end
 ######this one is a post to
 post '/contacts' do 
 	#POST TO the contacts page with info from the 'create_contact method' form on contacts/new
-	@@rolodex.create_contact(params[:first_name], params[:last_name], params[:email], params[:notes])
+	contact = Contact.create(
+		:first_name=> params[:first_name],
+		:last_name=> params[:last_name],
+		:email=> params[:email],
+		:notes=>params[:notes]
+	)
 	redirect to('/contacts')
 end
 
 get '/contacts' do
-	#get to/link to the contacts page 
-	#show all contacts
+	@contacts = Contact.all
 	erb :contacts
 end
 
-#######Show specified contact
-get '/contacts/:id' do 
-	@contact = @@rolodex.find(params[:id].to_i)	
-	if @contact
-		erb :show_contact
-	else
-		raise Sinatra::NotFound
-	end
-end
 
 #####go to edit contact form#####
 get '/contacts/:id/edit' do 
 	#/contacts/SOMETHING/edit
-	@contact = @@rolodex.find(params[:id].to_i)
+	@contact = Contact.get(params[:id].to_i)
 	if @contact
 		erb :edit
 	else
@@ -73,7 +65,7 @@ get '/find' do
 	@@message = ""
 	if params[:last_name]
 		# find the matching contacts, if any (could be many)
-		@@rolodex.contacts.each do |contact| 
+		@contact = Contact.each do |contact| 
 			if contact.last_name==params[:last_name] 
 				@found_contacts << contact
 			else

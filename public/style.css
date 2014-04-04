@@ -16,6 +16,7 @@ input{
 body{
 	/*background-color:#123EAB;*/
 	background:url("background.png");
+	background-position:center;
 }	
 div{
 	border-radius: 7px;

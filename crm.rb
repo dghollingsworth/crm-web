@@ -1,8 +1,32 @@
 require_relative 'rolodex'
-require_relative 'contact'
 require 'sinatra'
+require 'data_mapper'
+
+DataMapper.setup(:default, "sqlite3:database.sqlite3")
+
+
+class Contact
+	
+	include DataMapper::Resource
+
+	property :id, Serial
+	property :first_name, String
+	property :last_name, String
+	property :email, String
+	property :notes, String
+
+	def to_s
+		"ID: #{@id}\nFirst Name: #{@first_name.capitalize}\nLast Name: #{@last_name.capitalize}\nEmail: #{@email}\nNotes: #{@notes}\n********"
+	end
+end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
+
 @@message = ""
 @@rolodex = Rolodex.new 
+
+
 
 #This is the Contact Form
 get '/contacts/new' do
@@ -46,14 +70,14 @@ end
 
 get '/find' do 
 	@found_contacts = []
-	
+	@@message = ""
 	if params[:last_name]
 		# find the matching contacts, if any (could be many)
 		@@rolodex.contacts.each do |contact| 
 			if contact.last_name==params[:last_name] 
 				@found_contacts << contact
 			else
-				"Sorry...None Found"
+				@@message = "Sorry...nothing found"
 			end
 		end
 	end
@@ -61,14 +85,20 @@ get '/find' do
 end
 
 delete "/contacts/:id" do 
+	@@message = ""
 	@contact = @@rolodex.find(params[:id].to_i)
 	if @contact
 		@@rolodex.delete_contact(@contact)
 		@@message = "Contact Deleted"
-		redirect to("/find")
+		redirect to("/delete")
 	else
 		raise Sinatra::NotFound
 	end
+end
+
+get "/delete" do
+	@message = "Contact Deleted" 
+	erb :delete
 end
 
 put "/contacts/:id" do 

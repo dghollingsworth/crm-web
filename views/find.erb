@@ -9,12 +9,12 @@
 			<p><%=contact.email %>,</p> 
 			<p><%=contact.notes %></p>
 			<!--<p><a href="/contacts/<%=contact.id%>/edit">EDIT</a></p> -->
-			<form class="submit_button" action="/contacts/<%=contact.id%>/edit" method="get">
-				<input type="submit" value="  Edit Contact  ">
+			<form class="button_float" action="/contacts/<%=contact.id%>/edit" method="get">
+				<input class="button_header" type="submit" value="  Edit  ">
 			</form>
-			<form class="submit_button" action="/contacts/<%= contact.id %>" method="post">
+			<form class="button_float" action="/contacts/<%= contact.id %>" method="post">
 				<input type="hidden" name="_method" value="delete">
-				<input type="submit" value="Delete Contact">
+				<input class="button_header" type="submit" value=" Delete ">
 			</form>
 		<% end %>
 		<%if @@message.length > 0%>

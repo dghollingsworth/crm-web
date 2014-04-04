@@ -1,4 +1,4 @@
-require_relative 'rolodex'
+
 require 'sinatra'
 require 'data_mapper'
 
@@ -21,8 +21,6 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 @@message = ""
-@@rolodex = Rolodex.new 
-
 
 
 #This is the Contact Form

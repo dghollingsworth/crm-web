@@ -9,29 +9,29 @@ input{
 	color:#000;
 }
 *{
+	color:#A9A9A9;
+	font-family: Courier,Arial, sans-serif;
 	color:Gainsboro;
-	font-family: Courier, Arial, sans-serif;
-	color:Gainsboro;
+	-moz-box-sizing:border-box; 
+  	-webkit-box-sizing: border-box; 
+  	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
 }
 body{
 	/*background-color:#123EAB;*/
-	background:url("background.png");
+	background:url("sunset_city.png");
 	background-position:center;
 }	
 div{
 	border-radius: 7px;
-	border:2px dashed Gainsboro;
-	background-color:;
 	width:70%;
 	margin-left: auto;
 	margin-right: auto;
 	padding:1rem;
 	margin-top: 7px;
-}
-*{
-  -moz-box-sizing:border-box; 
-  -webkit-box-sizing: border-box; 
-  box-sizing: border-box;
+	background:rgba(0,0,0,0.3);
 }
 #header{
 	text-align: center;
@@ -52,13 +52,6 @@ div{
 	margin-left: 1.3rem;
 }
 
-a{
-	text-decoration:none;
-	color:#DCDCDC;
-}
-a:hover{
-	text-decoration: underline;
-}
 input{
 	margin-left:1.3rem;
 }
@@ -68,10 +61,45 @@ fieldset{
 ul{
 	list-style: none;
 }
-.submit_button{
+.button_float{
 	display: inline-block;
 }	
 
+/*.button_style{
+	background:rgba(0,0,0,0.3);
+	color:Gainsboro;
+	border:0px;
+	border-radius: 5px;	
+	width:7rem;
+	height:2rem;
+}*/
+.button_style:hover{
+	background-color:rgba(0,0,0,0.1);
+}
 
+.button_main{
+	/*background:rgba(0,0,0,0.3);*/
+	color:Gainsboro;
+	border:0px;
+	border-radius: 5px;	
+	width:20rem;
+	height:3rem;
+	text-align: center;
+	padding-top:1rem;
+}
+.button_main:hover, .button_header:hover{
+	background-color:rgba(0,0,0,0.1);
+}
+
+.button_header{
+	background:none;
+	color:Gainsboro;
+	border:0px;
+	border-radius: 5px;	
+	text-align: center;
+	padding-top:0.4rem;
+	width:7rem;
+	height:2rem;
+}
 
 
